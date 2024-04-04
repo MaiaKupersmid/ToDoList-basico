@@ -4,25 +4,52 @@ var lista = [
         item: "tarea mate",
         fecha: "26-03-2024",
         check: true,
+    },
+    {
+        id: 0,
+        item: "prueba lengua",
+        fecha: "03-04-2024",
+        check: true,
     }
 ]
 
-/*const AgregarItem = ()  => {
-    for(let itt in lista){
-        let h = document.getElementById("checklist").innerHTML +=`
-        <input checked= ${lista.check} name="r" type="checkbox" id="${lista.id}"> 
-        <label for="01"> ${lista.item} </label>`
+function AgregarItem(){
+    var obj = {
+        id: lista.length,
+        item: document.getElementById("Input").value,
+        fecha: new Date(),
+        check: false,
+    };
+
+    console.log(obj)
+
+    lista.push(obj);
+    recargarItems();
+}
+
+function recargarItems()
+{
+    var h = document.getElementById("checklist");
+    lista.forEach(function(item) {
+    h.innerHTML += `
+        <input type="checkbox" ${item.check ? 'checked' : ''} id="${item.id}">
+        <label>${item.item}</label><br>
+        `;
+    });
+    
+}
+
+/*
+for(let i=0; i<lista.length; i++){
+    let h = document.getElementById("checklist")
+    h.innerHTML +=`
+    <input checked= ${lista[i].check} type="checkbox" id="${lista[i].id}"> 
+    <label> ${lista[i].item} </label>`
+}
+class Lista {
+    constructor(item){
+        this.item = item;
+        this.id = id;
+
     }
 }*/
-
-function AgregarItem() {
-    let input = document.getElementById("Input").value; //value??
-    lista.push(input);
-
-    /*if (inputValue === '') {
-      alert("You must write something!");
-    } else {
-      document.getElementById("myUL").appendChild(li);
-    }
-    document.getElementById("myInput").value = "";*/
-}

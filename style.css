@@ -5,6 +5,10 @@
     font-family: sans-serif;
 }
 
+h2{
+  color: #c3c8de;
+}
+
 html{
     width: 100vw;
     height: 100vh;
@@ -20,7 +24,6 @@ body{
     justify-content: center;
     align-items: center;
 }
-
 
 #checklist {
     --background: #fff;
@@ -75,8 +78,6 @@ body{
   }
   
   #checklist input[type="checkbox"] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
     position: relative;
     height: 15px;
     width: 15px;
@@ -327,16 +328,17 @@ body{
   }
   
   .close:hover {
-    background-color: #f44336;
+    background-color: #4f29f1;
     color: white;
   }
   
   /* Style the header */
   .header {
-    background-color: #f44336;
+    background-color: #4f29f0;
     padding: 30px 40px;
     color: white;
     text-align: center;
+
   }
   
   /* Clear floats after the header */
