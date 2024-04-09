@@ -1,55 +1,66 @@
 var lista = [
     {
         id: 0,
-        item: "tarea mate",
-        fecha: "26-03-2024",
-        check: true,
-    },
-    {
-        id: 0,
         item: "prueba lengua",
-        fecha: "03-04-2024",
+        fecha: new Date().getTime(),
         check: true,
+        tacho: new Date().getTime(),
     }
 ]
 
-function AgregarItem(){
+function AgregarItem() {
     var obj = {
         id: lista.length,
         item: document.getElementById("Input").value,
-        fecha: new Date(),
+        fecha: new Date().getTime(),
         check: false,
     };
-
-    console.log(obj)
-
     lista.push(obj);
     recargarItems();
 }
 
-function recargarItems()
-{
+function recargarItems() {
     var h = document.getElementById("checklist");
+    h.innerHTML= ``;
     lista.forEach(function(item) {
     h.innerHTML += `
-        <input type="checkbox" ${item.check ? 'checked' : ''} id="${item.id}">
-        <label>${item.item}</label><br>
-        `;
+        <input type="checkbox" onclick="Tachado(${item.id})" ${item.check ? 'checked' : ''} id="${item.id}">
+        <label>${item.item} - ${formatDate(new Date(item.fecha))}</label><br>`;
+        console.log(item.tacho);
     });
-    
 }
 
-/*
-for(let i=0; i<lista.length; i++){
-    let h = document.getElementById("checklist")
-    h.innerHTML +=`
-    <input checked= ${lista[i].check} type="checkbox" id="${lista[i].id}"> 
-    <label> ${lista[i].item} </label>`
+function formatDate(date) {
+    return date.getDate()+'/'+date.getMonth()+'/'+ date.getFullYear() + '      ' + date.getHours() + ':' + date.getMinutes();
 }
-class Lista {
-    constructor(item){
-        this.item = item;
-        this.id = id;
 
+function Tachado(id) {
+    const txt = document.getElementById(id);
+    const tarea = lista.find(t => t.id === id);
+    const cuando = 0
+    if(tarea){
+        cuando = tarea.tacho = new Date().getTime();
+        return tarea.check = true;
+    } else {
+        cuando = lista.tarea.tacho = 0;
+        return tarea.check = false;
     }
-}*/
+}
+
+function rapido(){
+    var h = document.getElementById("checklist");
+    h.innerHTML= ``;
+    let masRa = 0;
+    let cual = ""
+    for(let i = 0; i <= lista.length; i++){
+        if(masRa<lista.tacho){
+            masRa=lista.tacho;
+            cual = lista.item
+        }
+    }
+    console.log(masRa);
+    h.innerHTML= `<p> El mas rapido en realizarse fue ${cual}</p>`;
+    lista.forEach(function(item) {
+
+    });
+}
